@@ -99,3 +99,15 @@
           ("CANCELLED" . ?✘)
           ("DONE" . ?✔)))
   (org-superstar-restart))
+
+  (setq org-agenda-time-grid
+        (quote
+         ((daily today remove-match)
+          (800 1200 1600 2000)
+          "......" "----------------")))
+
+(setq org-agenda-custom-commands
+      '(("w" "Todo of databuoy" todo '("TODO" "HOLD")
+         ((org-agenda-files '("~/org/dbuoy.org")))
+         ((agenda "" ((org-agenda-span 7))))
+         )))
