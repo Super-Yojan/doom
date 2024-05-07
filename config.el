@@ -111,3 +111,18 @@
          ((org-agenda-files '("~/org/dbuoy.org")))
          ((agenda "" ((org-agenda-span 7))))
          )))
+
+(setq fpga-feature-list '(xilinx))
+(require 'fpga)
+(setq fpga-xilinx-vivado-bin "/tools/Xilinx/Vivado/2023.2/bin/vivado")
+(setq fpga-xilinx-vivado-cmd-opts '("vivado" "-mode" "tcl" "-nojournal" "-nolog"))
+
+(defun set-exec-path-from-shell-PATH ()
+  (interactive)
+  (let ((path-from-shell (replace-regexp-in-string
+                          "[ \t\n]*$" "" (shell-command-to-string
+                                          "$SHELL --login -c 'string join : $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+(set-exec-path-from-shell-PATH)

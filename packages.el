@@ -50,3 +50,5 @@
 ;; (unpin! t)
 
 (package! org-bullets)
+(package! fpga
+  :recipe (:host github :repo "gmlarumbe/fpga"))
