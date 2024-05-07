@@ -45,6 +45,32 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+(setq org-capture-templates
+      `(("t" "Task" entry (file "refile.org")
+         ,(string-join '("* TODO %?"
+                         ":PROPERTIES:"
+                         ":CREATED: %U"
+                         ":END:")
+                       "\n"))
+       ("n" "Note" entry (file "refile.org")
+         ,(string-join '("* %?"
+                         ":PROPERTIES:"
+                         ":CREATED: %U"
+                         ":END:")
+                       "\n"))
+        ("m" "Meeting" entry (file "refile.org")
+         ,(string-join '("* %? :meeting:"
+                         "<%<%Y-%m-%d %a %H:00>>"
+                         ""
+                         "/Met with: /")
+                       "\n"))
+        ("a" "Appointment" entry (file "refile.org")
+         ,(string-join '("* %? :appointment:"
+                         ":PROPERTIES:"
+                         ":CREATED: %U"
+                         ":END:")
+                       "\n"))
+        ))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
