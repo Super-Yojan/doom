@@ -32,14 +32,15 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'modus-operandi)
 
 (setq user-full-name "Yojan Gautam"
       user-mail-address "ygautam2@gmu.edu")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
+
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -104,8 +105,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; (use-package! org-bullets)
-
 
 (with-eval-after-load 'org-superstar
   (setq org-superstar-item-bullet-alist
@@ -138,10 +137,6 @@
          ((agenda "" ((org-agenda-span 7))))
          )))
 
-(setq fpga-feature-list '(xilinx))
-(require 'fpga)
-(setq fpga-xilinx-vivado-bin "/tools/Xilinx/Vivado/2023.2/bin/vivado")
-(setq fpga-xilinx-vivado-cmd-opts '("vivado" "-mode" "tcl" "-nojournal" "-nolog"))
 
 (defun set-exec-path-from-shell-PATH ()
   (interactive)
@@ -153,18 +148,13 @@
 
 (set-exec-path-from-shell-PATH)
 
-(setq bibtex-completion-bibliography '("~/org/resources/bib/refs.bib")
-	bibtex-completion-library-path '("~/Dropbox/emacs/bibliography/bibtex-pdfs/")
-	bibtex-completion-notes-path "~/Dropbox/emacs/bibliography/notes/"
-	bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+(setq confirm-kill-emacs nil)
 
-	bibtex-completion-additional-search-fields '(keywords)
-	bibtex-completion-display-formats
-	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
-	bibtex-completion-pdf-open-function
-	(lambda (fpath)
-	  (call-process "open" nil 0 nil fpath)))
+(add-hook! 'org-mode-hook #'mixed-pitch-mode)
+;;(add-hook! 'org-mode-hook #'solaire-mode)
+(setq mixed-pitch-variable-pitch-cursor nil)
+
+
+(use-package denote
+  :config
+  (setq denote-directory (expand-file-name "~/org/denote/")))
