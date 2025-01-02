@@ -150,9 +150,9 @@
 
 (setq confirm-kill-emacs nil)
 
-(add-hook! 'org-mode-hook #'mixed-pitch-mode)
+;;(add-hook! 'org-mode-hook #'mixed-pitch-mode)
 ;;(add-hook! 'org-mode-hook #'solaire-mode)
-(setq mixed-pitch-variable-pitch-cursor nil)
+;;(setq mixed-pitch-variable-pitch-cursor nil)
 
 
 (use-package denote
