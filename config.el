@@ -44,7 +44,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Google Drive/My Drive/org/")
 
 (setq org-capture-templates
       `(("t" "Task" entry (file "refile.org")
@@ -72,6 +72,8 @@
                          ":END:")
                        "\n"))
         ))
+
+
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -131,12 +133,6 @@
           (800 1200 1600 2000)
           "......" "----------------")))
 
-(setq org-agenda-custom-commands
-      '(("w" "Todo of databuoy" todo '("TODO" "HOLD")
-         ((org-agenda-files '("~/org/dbuoy.org")))
-         ((agenda "" ((org-agenda-span 7))))
-         )))
-
 
 (defun set-exec-path-from-shell-PATH ()
   (interactive)
@@ -154,7 +150,6 @@
 ;;(add-hook! 'org-mode-hook #'solaire-mode)
 ;;(setq mixed-pitch-variable-pitch-cursor nil)
 
-
 (use-package denote
   :config
-  (setq denote-directory (expand-file-name "~/org/denote/")))
+  (setq denote-directory (expand-file-name "~/Google Drive/My Drive/org/denote/")))
